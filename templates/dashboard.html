@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Adventurously - Dashboard</title>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top px-5">
+
+                <a class="navbar-brand" href="index.html">
+                    <img src="../static/images/logo.png" width="40px" height="30px" class="d-inline-block align-top" alt="">
+                    Adventurously
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-md-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                <div class="dropdown-menu navbar-custom" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">Option1</a>
+                                    <a class="dropdown-item" href="#">Option2</a>
+                                    <a class="dropdown-item" href="#">Option3</a>
+                                    <a class="dropdown-item" href="#">Option4</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="data.html">Data</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+        <div class="container-fluid" style="padding-top: 70px">
+<!-- Begin unique pages -->
+
+            <div class="row mx-md-4">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Map</h2>
+                                <hr>
+                                <div id="map"></div>
+                                <img class="img-fluid" src="../static/images/abstract-q-c-1280-720-3.jpg" width="100%">
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Compare data from two states:</h2>
+                            </div>
+                        </div>
+                        
+                        <form>
+                            <div class="row">
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-2">
+                                    <label for="state">Select a State</label>
+                                    <br>
+                                    <select id="state">
+                                        <option>None</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label for="state">Select another State</label>
+                                    <br>
+                                    <select id="state">
+                                        <option>None</option>
+                                    </select>
+                                </div>                                 
+                                <div class="col-lg-2">
+                                    <br>
+                                    <div class="btn-group p-2">
+                                        <button id="filter-btn" type="submit" class="btn btn-secondary border-dark">Compare</button>
+                                        <button id="reset-btn" type="reset" class="btn btn-secondary border-dark">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr>
+                                <h3>Temperature</h3>
+                                <div id="viz-1"></div>
+                                <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-4.jpg">
+                                <hr>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                            <!-- <div class="col-md-12 bg-white rounded-lg p3"> -->
+                                <h3>Average Temperature</h3>
+                                <div id="viz-2"></div>
+                                <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-6.jpg">
+                                <hr>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                        <!-- <div class="row"> -->
+                            <!-- <div class="col-md-12 bg-white rounded-lg p3"> -->
+                                <h3>Precipitation</h3>
+                                <div id="viz-3"></div>
+                                <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-7.jpg">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 bg-white rounded-lg p3">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+    
+    <div class="bottom bg-secondary">
+        <footer class="footer-copyright bg-secondary pt-1" style="height: 45px">
+            <p class="text-light text-center"><small>© Team Adventurously@Data Bootcamp - University of Minnesota, All Rights Reserved 2019</small></p>
+        </footer>
+    </div>
+
+</html>
