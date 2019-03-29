@@ -19,6 +19,7 @@ app = Flask(__name__)
 #################################################
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/adventurously.sqlite"
+
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -143,6 +144,15 @@ def geojson():
     data = query.all()
 
     return jsonify(to_feature_coll(data))
+
+@app.route("/news", methods=['GET'])
+def news():
+
+    engine = create_engine('sqlite:///db/scraped_content.sqlite', echo=False)
+    df = pd.read_sql('select * from NEWS', con=engine)
+
+    return jsonify(df.to_dict(orient='records'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
