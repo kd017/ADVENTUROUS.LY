@@ -58,3 +58,20 @@ curl http://localhost:5000/geojson?start=1924&end=1926&state=CA
 ```bash
 curl http://localhost:5000/geojson?start=1924&end=1926&station=USC00140645
 ```
+
+## Compare 2 States
+This API is used to compare two states. Returns yearly avg for all stations in each state
+
+Query Parameters Supported:
+  1. state1 - 2 letter state abbreviation
+  2. state2 - 2 letter state abbreviation
+
+If no parameter is passed or just one parameter is passed, default (CA, WY) will be used
+```bash
+curl http://localhost:5000/comparestates
+```
+
+If both parameters are passed, yearly averages for both states are returned
+```bash
+curl http://localhost:5000/comparestates?state1=CA&state2=WY
+```

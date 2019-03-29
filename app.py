@@ -6,7 +6,7 @@ import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, or_
+from sqlalchemy import create_engine, or_, func
 
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
@@ -84,6 +84,27 @@ def stations():
 def states():
     states = db.session.query(climate_history.STATE).distinct().order_by(climate_history.STATE).all()
     return jsonify([state[0] for state in states])
+
+@app.route("/comparestates", methods=['GET'])
+def comparestates():
+
+    state1 = request.args.get('state1')
+    state2 = request.args.get('state2')
+
+    # Use default if both args are note passed...
+    if state1 is None or state2 is None:
+        state1 = 'CA'
+        state2 = 'WY'
+
+    results = db.session.query(climate_history.STATE, climate_history.DATE, 
+                               func.avg(climate_history.TMAX).label('TMAX'),
+                               func.avg(climate_history.TMIN).label('TMIN'),
+                               func.avg(climate_history.TAVG).label('TAVG'),
+                               func.avg(climate_history.PRCP).label('PRCP')).\
+                          filter(or_(climate_history.STATE == state1, climate_history.STATE == state2)).\
+                          group_by(climate_history.STATE, climate_history.DATE).all()
+
+    return jsonify([{"STATE":row[0], "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
 
 @app.route("/geojson", methods=['GET'])
