@@ -75,3 +75,10 @@ If both parameters are passed, yearly averages for both states are returned
 ```bash
 curl http://localhost:5000/comparestates?state1=CA&state2=WY
 ```
+
+## Retrieve News
+This API is used to retrieve news for main landing page.
+
+```bash
+curl http://localhost:5000/news
+```
