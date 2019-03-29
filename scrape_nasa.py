@@ -28,7 +28,8 @@ def scrape_news(browser):
        news_href = NASA_CLIMATE_BASE_URL + news_slide.find('a')['href']
        news_title = news_slide.find("div", class_="content_title").text
        news_p = news_slide.find("div", class_="article_teaser_body").text
-       news.append({"title": news_title, "href": news_href, "teaser": news_p})
+       news_img = NASA_CLIMATE_BASE_URL + news_slide.find("div", class_="list_image").find('img')['src']
+       news.append({"title": news_title, "href": news_href, "teaser": news_p, "image":news_img})
        if index > 5:
            break
 
