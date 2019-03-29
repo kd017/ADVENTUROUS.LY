@@ -66,9 +66,20 @@ def to_feature_coll(all):
 
 @app.route("/")
 @app.route("/home")
+@app.route("/index.html")
 def index():
     """Return the homepage."""
     return render_template("index.html")
+
+@app.route("/dashboard.html")
+def dashboard():
+    """Return the homepage."""
+    return render_template("dashboard.html")
+
+@app.route("/data.html")
+def data():
+    """Return the homepage."""
+    return render_template("data.html")
 
 
 @app.route("/years", methods=['GET'])
