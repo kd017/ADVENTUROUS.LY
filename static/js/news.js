@@ -8,7 +8,7 @@ d3.json('/news').then(news => {
        .classed("carousel-item", true)
        .html(newsitem => {
            // console.log(newsitem)
-           return `<a href="${newsitem.href}"> \
+           return `<a href="${newsitem.href}" target="_blank"> \
                         <img class="img-fluid d-block w-100"  src="${newsitem.image}"  width="100%">  </a> \
                    <div> \
                       <p> ${newsitem.title}</p> \

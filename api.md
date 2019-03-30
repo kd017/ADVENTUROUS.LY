@@ -54,9 +54,14 @@ Below filters can be used along with any of the above flavors of year filters an
 curl http://localhost:5000/geojson?start=1924&end=1926&state=CA
 ```
 
-* station
+* station id - does a like filter
 ```bash
 curl http://localhost:5000/geojson?start=1924&end=1926&station=USC00140645
+```
+
+* station name - does a like filter
+```bash
+curl http://localhost:5000/geojson?start=1924&end=1926&name=ROXBURY
 ```
 
 ## Compare 2 States
