@@ -11,6 +11,8 @@ from sqlalchemy import create_engine, or_, func
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from geojson import Feature, Point, FeatureCollection
+from states import *
+
 
 app = Flask(__name__)
 
@@ -52,6 +54,12 @@ def asfeature(elem):
             properties[key] = str(getattr(elem, key))
         else:
             properties[key] = getattr(elem, key)
+        if key == 'STATE':
+            value = properties[key]
+            if value in states_map:
+                properties['STATE_NAME'] = states_map[value]
+            else:
+                properties['STATE_NAME'] = 'N/A'
 
     feature = Feature(geometry=point, properties=properties)
     return feature
