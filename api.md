@@ -87,3 +87,10 @@ This API is used to retrieve news for main landing page.
 ```bash
 curl http://localhost:5000/news
 ```
+
+# Retrieve Averages by State for all years
+This API is used to retrieve averages by state for all years;
+
+```bash
+curl http://localhost:5000/averages
+```

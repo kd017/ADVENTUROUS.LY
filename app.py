@@ -11,6 +11,8 @@ from sqlalchemy import create_engine, or_, func
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from geojson import Feature, Point, FeatureCollection
+from states import *
+
 
 app = Flask(__name__)
 
@@ -52,6 +54,12 @@ def asfeature(elem):
             properties[key] = str(getattr(elem, key))
         else:
             properties[key] = getattr(elem, key)
+        if key == 'STATE':
+            value = properties[key]
+            if value in states_map:
+                properties['STATE_NAME'] = states_map[value]
+            else:
+                properties['STATE_NAME'] = 'N/A'
 
     feature = Feature(geometry=point, properties=properties)
     return feature
@@ -118,6 +126,22 @@ def comparestates():
 
     return jsonify([{"STATE":row[0], "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
+def statename(abbr):
+    if abbr in states_map:
+        return states_map[abbr]
+
+    return 'UT'
+
+@app.route("/averages", methods=['GET'])
+def averages():
+    results = db.session.query(climate_history.STATE, climate_history.DATE,
+                               func.avg(climate_history.TMAX).label('TMAX'),
+                               func.avg(climate_history.TMIN).label('TMIN'),
+                               func.avg(climate_history.TAVG).label('TAVG'),
+                               func.avg(climate_history.PRCP).label('PRCP')
+                               ).\
+                          group_by(climate_history.STATE, climate_history.DATE).all()
+    return jsonify([{"STATE":row[0], "STATE_NAME":statename(row[0]), "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
 @app.route("/geojson", methods=['GET'])
 def geojson():
