@@ -134,13 +134,18 @@ def statename(abbr):
 
 @app.route("/averages", methods=['GET'])
 def averages():
-    results = db.session.query(climate_history.STATE, climate_history.DATE,
+    year = request.args.get('year')
+    query = db.session.query(climate_history.STATE, climate_history.DATE,
                                func.avg(climate_history.TMAX).label('TMAX'),
                                func.avg(climate_history.TMIN).label('TMIN'),
                                func.avg(climate_history.TAVG).label('TAVG'),
                                func.avg(climate_history.PRCP).label('PRCP')
-                               ).\
-                          group_by(climate_history.STATE, climate_history.DATE).all()
+                               )
+    if year is not None:
+        query = query.filter(climate_history.DATE == year)
+
+    results = query.group_by(climate_history.STATE, climate_history.DATE).all()
+
     return jsonify([{"STATE":row[0], "STATE_NAME":statename(row[0]), "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
 @app.route("/geojson", methods=['GET'])

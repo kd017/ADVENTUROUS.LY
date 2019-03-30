@@ -94,3 +94,8 @@ This API is used to retrieve averages by state for all years;
 ```bash
 curl http://localhost:5000/averages
 ```
+
+This API also supports single year fetches
+```bash
+curl http://localhost:5000/averages?year=2018
+```
