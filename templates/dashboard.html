@@ -17,9 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
 </head>
 
 <body>
@@ -95,22 +93,21 @@
 
                     <form>
                         <div class="row">
-                            <!-- <div class="col-lg-1"></div> -->
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label for="state1">Select a State</label>
                                 <br>
                                 <select id="state1">
                                     <option></option>
                                 </select>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <label for="state2">Select another State</label>
                                 <br>
                                 <select id="state2">
                                     <option></option>
                                 </select>
                             </div>
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <br>
                                 <div class="btn-group p-2">
                                     <button id="filter-btn" type="submit"
@@ -124,7 +121,7 @@
 
 
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <hr>
                             <h3 id='compare-temp-heading'>Temperature</h3>
                             <div id="viz-1"></div>
@@ -134,6 +131,51 @@
                             <hr>
                             <h3>Precipitation</h3>
                             <div id="viz-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>Compare data for two years:</h2>
+                        </div>
+                    </div>
+
+                    <form>
+                        <div class="row">
+                            <!-- <div class="col-lg-1"></div> -->
+                            <div class="col-lg-3">
+                                <label for="year1">Select a Year</label>
+                                <br>
+                                <select id="year1">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="year2">Select another Year</label>
+                                <br>
+                                <select id="year2">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <br>
+                                <div class="btn-group p-2">
+                                    <button id="filter-btn-yr" type="submit"
+                                        class="btn btn-secondary border-dark">Compare</button>
+                                    <button id="reset-btn-yr" type="reset"
+                                        class="btn btn-secondary border-dark">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <div class="row mb-6">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="viz-yr-1"></div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="viz-yr-2"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -148,6 +190,8 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
     <script type="text/javascript" src="static/js/metricsgraphics.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <script type="text/javascript" src="static/js/config.js"></script>
     <script type="text/javascript" src="static/js/compare.js"></script>
 </body>
 

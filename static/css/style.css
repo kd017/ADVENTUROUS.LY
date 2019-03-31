@@ -9,3 +9,23 @@ select {
     color: #8e979f;
     outline: none;
 }
+
+div#viz-yr-1 {
+    width: 100%;
+    position: inherited;
+    height: 400px;
+    margin:10px;
+    padding:10px; 
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+div#viz-yr-2 {
+    width: 100%;
+    position: inherited;
+    height: 400px;
+    margin:10px;
+    padding:10px; 
+    border: 1px solid black;
+    border-radius: 8px;
+}
