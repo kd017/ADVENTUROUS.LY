@@ -102,8 +102,8 @@ function update_charts(state1, state2) {
 
     d3.json(url).then(data => {
 
-        data1 = data.filter(d => d.STATE === state1).map(d => { return {"date":+d.DATE, "value": +d.TMAX * 9 / 5 + 32}; })
-        data2 = data.filter(d => d.STATE === state2).map(d => { return {"date":+d.DATE, "value": +d.TMAX * 9 / 5 + 32}; })
+        data1 = data.filter(d => d.STATE === state1).map(d => { return { "date": +d.DATE, "value": +d.TMAX * 9 / 5 + 32 }; })
+        data2 = data.filter(d => d.STATE === state2).map(d => { return { "date": +d.DATE, "value": +d.TMAX * 9 / 5 + 32 }; })
         plotdata1 = [data1, data2]
 
         MG.data_graphic({
@@ -120,8 +120,8 @@ function update_charts(state1, state2) {
         });
         d3.select('#compare-temp-heading').text(`Max Temperature - ${state1} vs ${state2}`)
 
-        data3 = data.filter(d => d.STATE === state1).map(d => { return {"date":+d.DATE, "value": +d.TAVG * 9 / 5 + 32}; })
-        data4 = data.filter(d => d.STATE === state2).map(d => { return {"date":+d.DATE, "value": +d.TAVG * 9 / 5 + 32}; })
+        data3 = data.filter(d => d.STATE === state1).map(d => { return { "date": +d.DATE, "value": +d.TAVG * 9 / 5 + 32 }; })
+        data4 = data.filter(d => d.STATE === state2).map(d => { return { "date": +d.DATE, "value": +d.TAVG * 9 / 5 + 32 }; })
         plotdata2 = [data3, data4]
 
         MG.data_graphic({
@@ -139,8 +139,8 @@ function update_charts(state1, state2) {
         d3.select('#compare-avg-heading').text(`Average Temperature - ${state1} vs ${state2}`)
 
 
-        data5 = data.filter(d => d.STATE === state1).map(d => { return {"date":+d.DATE, "value": +d.PRCP / 25.4}; })
-        data6 = data.filter(d => d.STATE === state2).map(d => { return {"date":+d.DATE, "value": +d.PRCP / 25.4}; })
+        data5 = data.filter(d => d.STATE === state1).map(d => { return { "date": +d.DATE, "value": +d.PRCP / 25.4 }; })
+        data6 = data.filter(d => d.STATE === state2).map(d => { return { "date": +d.DATE, "value": +d.PRCP / 25.4 }; })
         plotdata3 = [data5, data6]
 
         MG.data_graphic({
@@ -162,26 +162,31 @@ function update_charts(state1, state2) {
 
 function update_maps(year1, year2) {
     url1 = `/geojson?start=${year1}`;
-    url2 = `/geojson?start=${year1}`;
+    url2 = `/geojson?start=${year2}`;
 
     d3.json(url1).then(data => render_map(data, year1, 'viz-yr-1'))
     d3.json(url2).then(data => render_map(data, year2, 'viz-yr-2'))
 }
 
 function render_map(data, year, target) {
-   // d3.select(target).html("");
 
-   var map = L.map(target, {
-      center: [45.52, -122.67],
-      zoom: 13
+    d3.select(`#c-${target}`).html(`<div id='${target}'></div>`);
+
+    var map = L.map(target, {
+        center: [37, -95],
+        zoom: 3,
     });
 
     L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-      attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-      maxZoom: 18,
-      id: "mapbox.streets",
-      accessToken: API_KEY
+        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+        maxZoom: 10,
+        id: "mapbox.light",
+        accessToken: API_KEY
     }).addTo(map);
+
+    heatmap_data = data.map(feature => { return [feature.properties.LATITUDE, feature.properties.LONGITUDE, feature.properties.TAVG] })
+
+    L.heatLayer(heatmap_data, { radius: 10 }).addTo(map);
 
     map.invalidateSize();
 }
