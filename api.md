@@ -27,6 +27,8 @@ Query Parameters Supported:
   3. comparewith - year to compare with (end will be ignored, if compare with is provided)
   4. state - 2 letter state abbreviation
   5. station - station ID
+  6. name - station Name
+  7. limit - return top n records
 
 * If no parameters are passed, only 2018 data is returned
 ```bash
@@ -62,6 +64,12 @@ curl http://localhost:5000/geojson?start=1924&end=1926&station=USC00140645
 * station name - does a like filter
 ```bash
 curl http://localhost:5000/geojson?start=1924&end=1926&name=ROXBURY
+```
+
+* limit - get top n records
+limit can be used with any of the above paramters
+```bash
+curl http://localhost:5000/geojson?limit=1000
 ```
 
 ## Compare 2 States
