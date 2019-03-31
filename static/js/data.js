@@ -3,19 +3,6 @@ function render_table(url) {
         url = "/geojson";
     }
 
-    try {
-        // table = $('#data-table').DataTable({
-        //     retrieve: true,
-        //     paging: false
-        // });
-        // if (table) {
-        //     table.destroy();
-        // }
-    }
-    catch (err) {
-        // ignore 
-    }
-
     d3.json(url).then(data => {
         table_data = data.map(feature => {
             return Object.values(feature.properties)
@@ -26,22 +13,25 @@ function render_table(url) {
         tcontainer.append('table').attr('id', 'data-table').attr('width', '100%').classed('display', true)
 
         $(document).ready(function () {
-            $('#data-table').DataTable({
-                data: table_data,
-                columns: [
-                    { title: "Date"},
-                    { title: "Elevation"},
-                    { title: "Latitude"},
-                    { title: "Longitude"},
-                    { title: "Name"},
-                    { title: "Precipitation"},
-                    { title: "State"},
-                    { title: "Station"},
-                    { title: "Avg. Temp"},
-                    { title: "Max Temp"},
-                    { title: "Min Temp"}
-                ]
-            });
+            table = $('#data-table')
+            if (table && (typeof table.DataTable === 'function')) {
+                table.DataTable({
+                    data: table_data,
+                    columns: [
+                        { title: "Date" },
+                        { title: "Elevation" },
+                        { title: "Latitude" },
+                        { title: "Longitude" },
+                        { title: "Name" },
+                        { title: "Precipitation" },
+                        { title: "State" },
+                        { title: "Station" },
+                        { title: "Avg. Temp" },
+                        { title: "Max Temp" },
+                        { title: "Min Temp" }
+                    ]
+                });
+            }
         });
     });
 }
