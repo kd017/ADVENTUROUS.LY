@@ -9,7 +9,7 @@ d3.json('/news').then(news => {
        .html(newsitem => {
            // console.log(newsitem)
            return `<a href="${newsitem.href}" target="_blank"> \
-                        <img class="img-fluid d-block w-100"  src="${newsitem.image}"  width="100%">  </a> \
+                        <img class="img-fluid d-block w-100"  title="${newsitem.teaser}" src="${newsitem.image}"  width="100%">  </a> \
                    <div> \
                       <p>${newsitem.title} \
                       <span class="badge badge-info">click on image</span> </p>\
