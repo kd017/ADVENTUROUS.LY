@@ -103,7 +103,7 @@ def stations():
 @app.route("/states", methods=['GET'])
 def states():
     states = db.session.query(climate_history.STATE).distinct().order_by(climate_history.STATE).all()
-    return jsonify([state[0] for state in states])
+    return jsonify([fixstate(state[0]) for state in states])
 
 @app.route("/comparestates", methods=['GET'])
 def comparestates():
