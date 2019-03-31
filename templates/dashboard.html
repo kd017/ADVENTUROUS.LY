@@ -9,7 +9,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/metricsgraphics.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -39,26 +40,31 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-md-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="dashboard.html">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="data.html">Data</a>
-                            </li>
-                            <li class="nav-item">
-                                <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
-                                    <div class="dropdown-menu navbar-custom" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" target="_blank" href="https://www.nationalgeographic.com/environment/global-warming/global-warming-overview/">Global Warming</a>
-                                        <a class="dropdown-item" target="_blank" href="https://climate.nasa.gov/evidence/">Evidence</a>
-                                        <a class="dropdown-item" target="_blank" href="https://climate.nasa.gov/fun-facts/">Fun Facts</a>
-                                        <a class="dropdown-item" target="_blank" href="https://climate.nasa.gov/solutions/resources/">Solutions</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                <ul class="navbar-nav ml-md-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data.html">Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources</a>
+                            <div class="dropdown-menu navbar-custom" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" target="_blank"
+                                    href="https://www.nationalgeographic.com/environment/global-warming/global-warming-overview/">Global
+                                    Warming</a>
+                                <a class="dropdown-item" target="_blank"
+                                    href="https://climate.nasa.gov/evidence/">Evidence</a>
+                                <a class="dropdown-item" target="_blank" href="https://climate.nasa.gov/fun-facts/">Fun
+                                    Facts</a>
+                                <a class="dropdown-item" target="_blank"
+                                    href="https://climate.nasa.gov/solutions/resources/">Solutions</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
         </nav>
@@ -91,17 +97,17 @@
                         <div class="row">
                             <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-2">
-                                <label for="state">Select a State</label>
+                                <label for="state1">Select a State</label>
                                 <br>
-                                <select id="state">
-                                    <option>None</option>
+                                <select id="state1">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-lg-2">
-                                <label for="state">Select another State</label>
+                                <label for="state2">Select another State</label>
                                 <br>
-                                <select id="state">
-                                    <option>None</option>
+                                <select id="state2">
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-lg-2">
@@ -120,25 +126,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <hr>
-                            <h3>Temperature</h3>
+                            <h3 id='compare-temp-heading'>Temperature</h3>
                             <div id="viz-1"></div>
-                            <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-4.jpg">
                             <hr>
-                            <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="row"> -->
-                            <!-- <div class="col-md-12 bg-white rounded-lg p3"> -->
                             <h3>Average Temperature</h3>
                             <div id="viz-2"></div>
-                            <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-6.jpg">
                             <hr>
-                            <!-- </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="row"> -->
-                            <!-- <div class="col-md-12 bg-white rounded-lg p3"> -->
                             <h3>Precipitation</h3>
                             <div id="viz-3"></div>
-                            <img class="img-fluid" src="../static/images/abstract-q-c-1000-250-7.jpg">
                         </div>
                     </div>
                     <div class="row">
@@ -150,9 +145,10 @@
             </div>
 
         </div>
-
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script type="text/javascript" src="static/js/metricsgraphics.min.js"></script>
+    <script type="text/javascript" src="static/js/compare.js"></script>
 </body>
 
 <div class="bottom bg-secondary">

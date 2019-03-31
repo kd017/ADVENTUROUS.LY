@@ -124,13 +124,20 @@ def comparestates():
                           filter(or_(climate_history.STATE == state1, climate_history.STATE == state2)).\
                           group_by(climate_history.STATE, climate_history.DATE).all()
 
-    return jsonify([{"STATE":row[0], "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
+    return jsonify([{"STATE":fixstate(row[0]), "STATE_NAME":statename(row[0]),"DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
 def statename(abbr):
     if abbr in states_map:
         return states_map[abbr]
 
     return 'UT'
+
+def fixstate(abbr):
+    if not abbr in states_map:
+        return 'UT'
+
+    return abbr
+
 
 @app.route("/averages", methods=['GET'])
 def averages():
@@ -146,7 +153,7 @@ def averages():
 
     results = query.group_by(climate_history.STATE, climate_history.DATE).all()
 
-    return jsonify([{"STATE":row[0], "STATE_NAME":statename(row[0]), "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
+    return jsonify([{"STATE":fixstate(row[0]), "STATE_NAME":statename(row[0]), "DATE":row[1], "TMAX":row[2], "TMIN":row[3], "TAVG":row[4], "PRCP":row[5]} for row in results])
 
 @app.route("/geojson", methods=['GET'])
 def geojson():
