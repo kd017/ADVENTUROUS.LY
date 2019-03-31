@@ -163,13 +163,15 @@ def geojson():
     #   3. comparewith - year to compare with (end will be ignored, if compare with is provided)
     #   4. state - 2 letter state abbreviation
     #   5. station - station ID
-    #   6. name - station ID
+    #   6. name - station Name
+    #   7. limit - return top n records
     start = request.args.get('start')
     end = request.args.get('end')
     comparewith = request.args.get('comparewith')
     state = request.args.get('state')
     station = request.args.get('station')
     name = request.args.get('name')
+    limit = request.args.get('limit')
 
     if start is None:
         start = 2018
@@ -191,6 +193,8 @@ def geojson():
         query = query.filter(climate_history.STATION.like(f'%{station}%'))
     if name is not None:
         query = query.filter(climate_history.NAME.like(f'%{name}%'))
+    if limit is not None:
+        query = query.limit(int(limit))
 
     data = query.all()
 

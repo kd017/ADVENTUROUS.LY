@@ -1,6 +1,6 @@
 function render_table(url) {
     if (!url) {
-        url = "/geojson";
+        url = "/geojson?limit=1000";
     }
 
     d3.json(url).then(data => {
@@ -88,6 +88,7 @@ function load_dropdowns() {
             url += `${sep}name=${sname}`;
             sep = '&';
         }
+        url += `${sep}limit=1000`;
         console.log(url)
         render_table(url);
     });
