@@ -71,7 +71,7 @@ function load_dropdowns() {
     button = d3.select('#filter-btn')
     button.on('click', function () {
         d3.event.preventDefault();
-        console.log('SUBMIT CLICKED')
+        // console.log('SUBMIT CLICKED')
         datevalue = d3.select('#date').property('value');
         statevalue = d3.select('#state').property('value');
         sid = d3.select('#sid').property('value');
@@ -103,7 +103,7 @@ function load_dropdowns() {
     button = d3.select('#reset-btn')
     button.on('click', function () {
         d3.event.preventDefault();
-        console.log('RESET CLICKED')
+        // console.log('RESET CLICKED')
         d3.select('#date').property('value', '');
         d3.select('#state').property('value', '');
         d3.select('#sid').property('value', '');
