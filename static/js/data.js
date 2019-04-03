@@ -5,38 +5,38 @@ function render_table(url) {
 
     d3.json(url).then(data => {
         table_data = data.map(feature => {
-            return Object.values(feature.properties)
+            props = feature.properties;
+            row = [props.DATE, props.STATION, props.NAME, props.ELEVATION, props.LATITUDE, props.LONGITUDE,
+            props.STATE, props.TMAX, props.TMIN, props.TAVG, props.PRCP];
+            return row
         })
 
         tcontainer = d3.select('#table-container');
         tcontainer.html('');
-        tcontainer.append('table').attr('id', 'data-table').attr('width', '100%').classed('display', true)
+        tcontainer.append('table').attr('id', 'data-table').attr('width', '100%').classed('display compact', true)
 
         $(document).ready(function () {
             table = $('#data-table')
             if (table && (typeof table.DataTable === 'function')) {
                 table.DataTable({
                     data: table_data,
+                    autoWidth: false,
+                    responsive: true,
                     columns: [
-                        { title: "Date" },
-                        { title: "Elevation" },
-                        { title: "Latitude" },
-                        { title: "Longitude" },
-                        { title: "Name" },
-                        { title: "Precipitation" },
-                        { title: "State" },
-                        { title: "Station" },
-                        { title: "Avg. Temp" },
-                        { title: "Max Temp" },
-                        { title: "Min Temp" }
-                      
-                    ]
-                    "scrollY":       "300px",
-                    "scrollCollapse": true,
-                    "paging":         false
+                        { title: "Year", width: "8%" },
+                        { title: "Station ID", width: "15%" },
+                        { title: "Station Name", width: "23%" },
+                        { title: "Elevation", width: "9%" },
+                        { title: "Lat.", width: "8%" },
+                        { title: "Long.", width: "8%" },
+                        { title: "State", width: "9%" },
+                        { title: "Max Temp", width: "5%" },
+                        { title: "Min Temp", width: "5%" },
+                        { title: "Avg. Temp", width: "5%" },
+                        { title: "Prcp", width: "5%" }
+                    ],
+                    "paging": true,
                     stateSave: true
-                        } );
-                    } );
                 });
             }
         });
