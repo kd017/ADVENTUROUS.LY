@@ -29,7 +29,14 @@ function render_table(url) {
                         { title: "Avg. Temp" },
                         { title: "Max Temp" },
                         { title: "Min Temp" }
+                      
                     ]
+                    "scrollY":       "300px",
+                    "scrollCollapse": true,
+                    "paging":         false
+                    stateSave: true
+                        } );
+                    } );
                 });
             }
         });
