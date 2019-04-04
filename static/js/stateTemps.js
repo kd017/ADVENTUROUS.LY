@@ -1,7 +1,7 @@
 // ===============================================
 // Base variable declarations and map setup
 // ===============================================
-var baseurl = "http://localhost:5000/averages?";
+var baseurl = "/averages?";
 var selectedYear = 2018;
 var qurl = baseurl + "year=" + selectedYear;
 var yearSlider = document.getElementById("mapYearRange");
