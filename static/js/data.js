@@ -13,7 +13,7 @@ function render_table(url) {
 
         tcontainer = d3.select('#table-container');
         tcontainer.html('');
-        tcontainer.append('table').attr('id', 'data-table').attr('width', '100%').classed('display compact', true)
+        tcontainer.append('table').attr('id', 'data-table').attr('width', '100%').classed('display compact table-responsive-xl', true)
 
         $(document).ready(function () {
             table = $('#data-table')
