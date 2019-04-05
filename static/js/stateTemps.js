@@ -109,10 +109,10 @@ function updatePopup(feature) {
         };
     });
     return `<h5>${name}</h5>
-            <p><b>YEAR:</b> ${year}</p>
-            <p><b>TAVG: </b> ${tavg.toFixed(2)}F</p>
-            <p><b>TMIN: </b> ${tmin.toFixed(2)}F</p>
-            <p><b>TMAX: </b> ${tmax.toFixed(2)}F</p>`;
+            <p><b>Year:</b> ${year}</p>
+            <p><b>Avg Temp: </b> ${tavg.toFixed(2)}F</p>
+            <p><b>Avg Min Temp: </b> ${tmin.toFixed(2)}F</p>
+            <p><b>Avg Max Temp: </b> ${tmax.toFixed(2)}F</p>`;
 }
 
 
