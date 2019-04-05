@@ -80,127 +80,128 @@
         <!-- Begin unique pages -->
 
         <div class="row mx-md-4">
-            <div class="card bg-white">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2>Historical Average State Temperatures</h2>
-                            <hr>
-                            <div id="map"></div>
-                            <hr>
-                            <form>
-                                <div class="form-group">
-                                    <label for="mapYearRange" id="mapYearLabel">Year: 2018</label>
-                                    <input type="range" min="1923" max="2018" value="2018" class="form-control-range" id="mapYearRange">
-                                    <a class="float-left">1923</a><a class="float-right">2018</a>
+            <div class="col-12">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Historical Average State Temperatures</h2>
+                                <hr>
+                                <div id="map"></div>
+                                <hr>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="mapYearRange" id="mapYearLabel">Year: 2018</label>
+                                        <input type="range" min="1923" max="2018" value="2018" class="form-control-range" id="mapYearRange">
+                                        <a class="float-left">1923</a><a class="float-right">2018</a>
+                                        <br>
+                                    </div>
+                                </form>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>Compare data from two states:</h2>
+                            </div>
+                        </div>
+
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <label for="state1">Select a State</label>
                                     <br>
+                                    <select id="state1">
+                                        <option></option>
+                                    </select>
                                 </div>
-                            </form>
-                            <hr>
-                        </div>
-                    </div>
+                                <div class="col-lg-3">
+                                    <label for="state2">Select another State</label>
+                                    <br>
+                                    <select id="state2">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <br>
+                                    <div class="btn-group p-2">
+                                        <button id="filter-btn" type="submit"
+                                            class="btn btn-secondary border-dark">Compare</button>
+                                        <button id="reset-btn" type="reset"
+                                            class="btn btn-secondary border-dark">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <h2>Compare data from two states:</h2>
-                        </div>
-                    </div>
 
-                    <form>
                         <div class="row">
-                            <div class="col-lg-3">
-                                <label for="state1">Select a State</label>
-                                <br>
-                                <select id="state1">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3">
-                                <label for="state2">Select another State</label>
-                                <br>
-                                <select id="state2">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3">
-                                <br>
-                                <div class="btn-group p-2">
-                                    <button id="filter-btn" type="submit"
-                                        class="btn btn-secondary border-dark">Compare</button>
-                                    <button id="reset-btn" type="reset"
-                                        class="btn btn-secondary border-dark">Reset</button>
-                                </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <hr>
+                                <h3 id='compare-temp-heading'>Temperature</h3>
+                                <div id="viz-1"></div>
+                                <hr>
+                                <h3>Average Temperature</h3>
+                                <div id="viz-2"></div>
+                                <hr>
+                                <h3>Precipitation</h3>
+                                <div id="viz-3"></div>
                             </div>
                         </div>
-                    </form>
 
-
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <hr>
-                            <h3 id='compare-temp-heading'>Temperature</h3>
-                            <div id="viz-1"></div>
-                            <hr>
-                            <h3>Average Temperature</h3>
-                            <div id="viz-2"></div>
-                            <hr>
-                            <h3>Precipitation</h3>
-                            <div id="viz-3"></div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <h2>Compare data for two years:</h2>
-                        </div>
-                    </div>
-
-                    <form>
                         <div class="row">
-                            <!-- <div class="col-lg-1"></div> -->
-                            <div class="col-lg-3">
-                                <label for="year1">Select a Year</label>
-                                <br>
-                                <select id="year1">
-                                    <option></option>
-                                </select>
+                            <div class="col-12">
+                                <h2>Compare data for two years:</h2>
                             </div>
-                            <div class="col-lg-3">
-                                <label for="year2">Select another Year</label>
-                                <br>
-                                <select id="year2">
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="col-lg-3">
-                                <br>
-                                <div class="btn-group p-2">
-                                    <button id="filter-btn-yr" type="submit"
-                                        class="btn btn-secondary border-dark">Compare</button>
-                                    <button id="reset-btn-yr" type="reset"
-                                        class="btn btn-secondary border-dark">Reset</button>
+                        </div>
+
+                        <form>
+                            <div class="row">
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-3">
+                                    <label for="year1">Select a Year</label>
+                                    <br>
+                                    <select id="year1">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="year2">Select another Year</label>
+                                    <br>
+                                    <select id="year2">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <br>
+                                    <div class="btn-group p-2">
+                                        <button id="filter-btn-yr" type="submit"
+                                            class="btn btn-secondary border-dark">Compare</button>
+                                        <button id="reset-btn-yr" type="reset"
+                                            class="btn btn-secondary border-dark">Reset</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
 
 
-                    <div class="row mb-6">
-                        <div id="c-viz-yr-1" class="col-md-6 col-sm-6 col-xs-12">
-                            <div id="viz-yr-1"></div>
+                        <div class="row mb-6">
+                            <div id="c-viz-yr-1" class="col-md-6 col-sm-6 col-xs-12">
+                                <div id="viz-yr-1"></div>
+                            </div>
+                            <div id="c-viz-yr-2" class="col-md-6 col-sm-6 col-xs-12">
+                                <div id="viz-yr-2"></div>
+                            </div>
                         </div>
-                        <div id="c-viz-yr-2" class="col-md-6 col-sm-6 col-xs-12">
-                            <div id="viz-yr-2"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 bg-white rounded-lg p3">
-                            <hr>
+                        <div class="row">
+                            <div class="col-md-12 bg-white rounded-lg p3">
+                                <hr>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
